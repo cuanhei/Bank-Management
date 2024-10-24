@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace Account
 {
+    public enum AccountType { 
+        Admin,
+        Member
+    }
+
     public class Account
     {
         private int id;
         private string username;
         private string password;
+        private AccountType accountType;
         private BankAccount[] bankAccounts;
 
         private static int numOfAcc;
