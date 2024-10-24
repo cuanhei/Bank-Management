@@ -8,7 +8,9 @@ namespace Account
 {
     public enum AccountType { 
         Admin,
-        Member
+        Member,
+        Golden,
+        Diamond
     }
 
     public class Account
@@ -16,7 +18,7 @@ namespace Account
         private int id;
         private string username;
         private string password;
-        private AccountType accountType;
+        private AccountType accType;
         private BankAccount[] bankAccounts;
 
         private static int numOfAcc;
@@ -27,6 +29,7 @@ namespace Account
             this.id = ++numOfAcc;
             this.username = "-";
             this.password = "-";
+            this.accType = AccountType.Member;
             this.bankAccounts = new BankAccount[MAX_BANK_ACCOUNT];
         }
         public Account(String username, String password): this() {
@@ -55,8 +58,22 @@ namespace Account
             }
         }
 
+        public AccountType AccType
+        {
+            get { return accType; }
+        }
+
         public void cancelCreate() {
             numOfAcc--;
         }
+
+
+        public void updateAccountType() {
+            double sum = 0;
+            foreach (BankAccount bankAcc in bankAccounts) {
+                sum += bankAcc.Balance;
+            }
+        }
+
     }
 }

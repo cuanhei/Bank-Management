@@ -9,6 +9,15 @@ namespace Account
     public class BankAccount
     {
         private int accountNo;
+        private int pin;
+        private double balance;
+        private DateTime lastLogIn;
+
+        private static int count;
+        public BankAccount() { 
+            
+        }
+
 
     }
 }
